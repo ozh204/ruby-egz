@@ -1,0 +1,28 @@
+<h1><%= headerText %></h1>
+
+<%= form_for @user do |u| %>
+
+    <%= render 'shared/error_messages' %>
+
+    <p>
+        <%= u.label :email, 'Email' %><br>
+        <%= u.email_field :email, class: 'form-control' %>
+    </p>
+
+    <p>
+        <%= u.label :password, 'Hasło' %><br>
+        <%= u.password_field :password, class: 'form-control' %>
+    </p>
+
+    <p>
+        <%= u.label :password_confirmation, 'Potwierdzenie hasła' %><br>
+        <%= u.password_field :password_confirmation, class: 'form-control' %>
+    </p>
+
+    <p>
+        <%= u.submit submitText, class: "btn btn-primary" %>
+    </p>
+
+<% end %>
+
+<%= link_to 'Wróć', users_path %>

@@ -1,0 +1,42 @@
+<%= form_for(order) do |f| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    Sklep:
+    <%= f.collection_select :shop_id, Shop.all, :id, :nazwa, include_blank: false, include_hidden: false %>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th class="col-md-1"></th>
+            <th class="col-md-1"></th>
+            <th class="col-md-6">Nazwa</th>
+            <th class="col-md-3">Cena</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @waffles.each do |w| %>
+            <tr>
+                <td><%= number_field_tag "selected_waffles[#{w.id}][]", 0, min: 0, max: 99, value: OrderWaffle.where(order_id: @order.id, waffle_id: w.id).pluck(:quantity).first || 0 %></td>
+                <td><%= image_tag(w.image.small) %></td>
+                <td><%= w.name %></td>
+                <td><%= w.price %> zł</td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+
+  <div class="actions">
+    <%= f.submit 'Edytuj zamówienie' %>
+  </div>
+<% end %>

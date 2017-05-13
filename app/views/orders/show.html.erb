@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cena:</strong>
+  <%= @order.price %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @order.date %>
+</p>
+
+<p>
+    <strong>Sklep:</strong>
+    <%= Shop.find(@order.shop_id).nazwa %>
+</p>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th class="col-md-1">Ilość</th>
+        <th class="col-md-1"></th>
+        <th class="col-md-6">Nazwa</th>
+        <th class="col-md-3">Cena</th>
+        <th class="col-md-1" colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @waffles&.each do |w| %>
+        <tr>
+            <td><%= OrderWaffle.where(order_id: @order.id, waffle_id: w.id).pluck(:quantity).first %></td>
+            <td><%= image_tag(w.image.small) %></td>
+            <td><%= w.name %></td>
+            <td><%= w.price %> zł</td>
+            <td><%= link_to 'Szczegóły', waffle_path(w) %></td>
+            <td><%= link_to 'Edytuj', edit_waffle_path(w) %></td>
+            <td><%= link_to 'Usuń', waffle_path(w),
+                            method: :delete,
+                    data: { confirm: 'Czy napewno chcesz usunąć tego gofra?' } %>
+            </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+
+<%= link_to 'Edytuj', edit_order_path(@order) %> |
+<%= link_to 'Wróć', orders_path %>
