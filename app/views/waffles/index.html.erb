@@ -3,48 +3,27 @@
 <%= link_to 'Nowy gofr', new_waffle_path %>
 
 <%= form_tag destroy_multiple_waffles_path, method: :delete do %>
-    <div  class="grids">
-      <div class="promocja">
-        <div class="rows">
-          <% @wafflesPromo.each do |a| %>
-            <div class="itemsPromo rowGrid">
-              <div class="check"><%= check_box_tag "waffles[]", a.id %></div>
-              <div id="images"><%= image_tag(a.image) %> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Gofr.JPG/220px-Gofr.JPG" width="300px"/> </div>
-              <div id="names"><%= a.name %></div>
-              <div id="prices"><%= a.price %> zł</div>
-              <div><%= link_to '', waffle_path(a), class: "fa fa-chevron-up" %></div>
-              <div><%= link_to '', edit_waffle_path(a), class: "fa fa-pencil-square-o" %></div>
-              <div><%= link_to '', waffle_path(a),
-                               method: :delete,
-                               data: { confirm: 'Czy napewno chcesz usunąć tego gofra?' } ,
-                               class: "fa fa-times"%>
-              </div>
-
+    <div id="mother-box">
+        <% @counter = 0 %>
+        <% (0..@wafflesPromoCount-1).each do |i| %>
+            <div id="box">
+                <div class="box1">
+                    <% if !@wafflesPromoArr[i].nil? %>
+                    <%= image_tag(@wafflesPromoArr[i].image) %>
+                    <% end %>
+                </div>
+                <% @box = 2 %>
+                <% (@counter..@counter+7).each do |j| %>
+                    <div class="box<%= @box %>">
+                        <% if !@wafflesArr[j].nil? %>
+                            <%= image_tag(@wafflesArr[j].image.small) %>
+                        <% end %>
+                    </div>
+                    <% @box+=1 %>
+                    <% @counter+=1 %>
+                <% end %>
             </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="zwykly">
-        <div class="rows">
-          <% @waffles.each do |w| %>
-            <div class="items rowGrid">
-              <div class="check"><%= check_box_tag "waffles[]", w.id %></div>
-              <div id="imageSmall"><%= image_tag(w.image.small) %><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Gofr.JPG/220px-Gofr.JPG" width="150px"/>  </div>
-              <div id="nameSmall"><%= w.name %></div>
-              <div id="priceSmall"><%= w.price %> zł</div>
-
-              <div class="linkSmall"><%= link_to '', waffle_path(w), class: "fa fa-chevron-up" %></div>
-              <div class="linkSmall"><%= link_to '', edit_waffle_path(w), class: "fa fa-pencil-square-o" %></div>
-              <div class="linkSmall"><%= link_to '', waffle_path(w),
-                        method: :delete,
-                        data: { confirm: 'Czy napewno chcesz usunąć tego gofra?' } ,
-                   class: "fa fa-times"%>
-              </div>
-
-            </div>
-          <% end %>
-        </div>
-      </div>
+        <% end %>
     </div>
 <%= submit_tag "Usuń zaznaczone" %>
 <% end %>

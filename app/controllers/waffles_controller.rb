@@ -2,8 +2,23 @@ class WafflesController < ApplicationController
   before_action :set_waffle, only: [:show, :edit, :update, :destroy, :removeImage]
 
   def index
-    @waffles = Waffle.where.not(discount:true)
-    @wafflesPromo = Waffle.where(discount:true)
+    waffles = Waffle.where.not(discount:true)
+    wafflesPromo = Waffle.where(discount:true)
+
+    @wafflesArr = Array.new
+    @wafflesArrCount = 0
+    waffles.each do |w|
+      @wafflesArr << w
+      @wafflesArrCount+=1
+    end
+
+    @wafflesPromoArr = Array.new
+    @wafflesPromoCount = 0
+    wafflesPromo.each do |w|
+      @wafflesPromoArr << w
+      @wafflesPromoCount+=1
+    end
+
   end
 
   def new
