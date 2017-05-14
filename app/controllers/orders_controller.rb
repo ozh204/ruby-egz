@@ -14,7 +14,9 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @waffles = Waffle.all
+    # @waffles = Waffle.all
+    @waffles = Waffle.where.not(discount:true)
+    @wafflesPromo = Waffle.where(discount:true)
   end
   def create
     @order = Order.new
