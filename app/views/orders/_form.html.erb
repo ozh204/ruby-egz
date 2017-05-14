@@ -15,34 +15,39 @@
     <%= f.collection_select :shop_id, Shop.all, :id, :nazwa, include_blank: false, include_hidden: false %>
 
 
+
+
     <div  class="grids">
-      <div class="promocja">
-        <div class="rows">
-          <% @wafflesPromo.each do |a| %>
+
+      <% @waffles.each_with_index do |k , i|   %>
+
+              <div class="rows">
+
               <div class="itemsPromo rowGrid">
-                <%= number_field_tag "selected_waffles[#{a.id}][]", 0, min: 0, max: 99, value: OrderWaffle.where(order_id: @order.id, waffle_id: a.id).pluck(:quantity).first || 0 %>
-                <div id="images"><%= image_tag(a.image) %><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Gofr.JPG/220px-Gofr.JPG" width="400px"/></div>
-                <div id="names"><%= a.name %></div>
-                <div id="prices"><%= a.price %> zł</div>
+                <%= number_field_tag "selected_waffles[#{ @wafflesPromo[i].id}][]", 0, min: 0, max: 99, value: OrderWaffle.where(order_id: @order.id, waffle_id: @wafflesPromo[i].id).pluck(:quantity).first || 0 %>
+                <div id="images"><%= image_tag(@wafflesPromo[i].image) %><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Gofr.JPG/220px-Gofr.JPG" width="400px"/></div>
+                <div id="names"><%= @wafflesPromo[i].name %></div>
+                <div id="prices"><%= @wafflesPromo[i].price %> zł</div>
 
               </div>
-          <% end %>
-        </div>
-      </div>
-      <div class="zwykly">
-        <div class="rows">
-          <% @waffles.each do |w| %>
-              <div class="items rowGrid">
-                <%= number_field_tag "selected_waffles[#{w.id}][]", 0, min: 0, max: 99, value: OrderWaffle.where(order_id: @order.id, waffle_id: w.id).pluck(:quantity).first || 0 %>
-                <div id="imageSmall"><%= image_tag(w.image.small) %><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Gofr.JPG/220px-Gofr.JPG" width="150px"/>  </div>
-                <div id="nameSmall"><%= w.name %></div>
-                <div id="priceSmall"><%= w.price %> zł</div>
 
+
+
+                    <% k.each do |w| %>
+                      <div class="items rowGrid">
+                      <%= number_field_tag "selected_waffles[#{w.id}][]", 0, min: 0, max: 99, value: OrderWaffle.where(order_id: @order.id, waffle_id: w.id).pluck(:quantity).first || 0 %>
+                      <div id="imageSmall"><%= image_tag(w.image.small) %><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Gofr.JPG/220px-Gofr.JPG" width="150px"/>  </div>
+                      <div id="nameSmall"><%= w.name %></div>
+                      <div id="priceSmall"><%= w.price %> zł</div>
+
+                    </div>
+
+                <% end %>
               </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
+
+      <% end %>
+</div>
+
   <div class="actions">
     <%= f.submit 'Edytuj zamówienie' %>
   </div>
