@@ -18,7 +18,7 @@
     <div  class="grids">
       <div class="promocja">
         <div class="rows">
-          <% @wafflesPromo.each do |a| %>
+          <% @wafflesPromo&.each do |a| %>
               <div class="itemsPromo rowGrid">
                 <%= number_field_tag "selected_waffles[#{a.id}][]", 0, min: 0, max: 99, value: OrderWaffle.where(order_id: @order.id, waffle_id: a.id).pluck(:quantity).first || 0 %>
                 <div id="images"><%= image_tag(a.image) %></div>
@@ -31,7 +31,7 @@
       </div>
       <div class="zwykly">
         <div class="rows">
-          <% @waffles.each do |w| %>
+          <% @waffles&.each do |w| %>
               <div class="items">
                 <%= number_field_tag "selected_waffles[#{w.id}][]", 0, min: 0, max: 99, value: OrderWaffle.where(order_id: @order.id, waffle_id: w.id).pluck(:quantity).first || 0 %>
                 <div><%= image_tag(w.image.small) %></div>

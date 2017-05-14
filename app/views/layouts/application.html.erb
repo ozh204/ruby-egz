@@ -14,27 +14,30 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto" >
-                <% if logged_in? %>
-                <% if current_user.has_role? :admin %>
+                <% if can? :read, Waffle %>
                 <li class="nav-item active">
                     <%= link_to 'Gofry', { controller: 'waffles' }, class: 'nav-link' %>
                 </li>
                 <% end %>
-                    <% end %>
-              <% if logged_in? %>
+                <% if can? :read, Order %>
                 <li class="nav-item active">
                     <%= link_to 'Zamówienia', { controller: 'orders' }, class: 'nav-link' %>
                 </li>
-                  <% end %>
+                <% end %>
+                <% if can? :read, Shop %>
                 <li class="nav-item active">
                     <%= link_to 'Sklepy', { controller: 'shops' }, class: 'nav-link' %>
                 </li>
-                <% if logged_in? %>
-                <% if current_user.has_role? :admin %>
+                <% end %>
+                <% if can? :manage, User %>
                 <li class="nav-item">
                     <%= link_to 'Użytkownicy', { controller: 'users' }, class: 'nav-link' %>
                 </li>
                 <% end %>
+                <% if can? :create, Order %>
+                    <li class="nav-item">
+                        <%= link_to 'Zamów', { controller: 'orders', action: 'new' }, class: 'nav-link' %>
+                    </li>
                 <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -61,7 +64,7 @@
 <div class="jumbotron" >
     <div class="container">
         <% flash.each do |message_type, message| %>
-            <div class="alert alert-<%= message_type %>"><%= message %></div>
+            <div class="alert alert-<%= message_type %>"><h1><%= message %></h1></div>
         <% end %>
         <%= yield %>
     </div>

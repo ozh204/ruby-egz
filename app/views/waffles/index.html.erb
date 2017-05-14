@@ -1,6 +1,8 @@
 <h1>Gofry</h1>
 
+<% if can? :create, Waffle %>
 <%= link_to 'Nowy gofr', new_waffle_path %>
+<% end %>
 
 <%= form_tag destroy_multiple_waffles_path, method: :delete do %>
     <div  class="grids">
@@ -8,17 +10,20 @@
         <div class="rows">
           <% @wafflesPromo.each do |a| %>
             <div class="itemsPromo rowGrid">
-              <div class="check"><%= check_box_tag "waffles[]", a.id %></div>
-              <div id="images"><%= image_tag(a.image) %></div>
+                <div id="images"><%= image_tag(a.image) %></div>
+                <div class="check"><%= check_box_tag "waffles[]", a.id %></div>
               <div id="names"><%= a.name %></div>
               <div id="prices"><%= a.price %> zł</div>
               <%= a.discount? %>
               <div class="link"><%= link_to 'Szczegóły', waffle_path(a) %></div>
-              <div  class="link"><%= link_to 'Edytuj', edit_waffle_path(a) %></div>
+                <% if can? :manage, Waffle %>
+            <div  class="link"><%= link_to 'Edytuj', edit_waffle_path(a) %></div>
               <div  class="link"><%= link_to 'Usuń', waffle_path(a),
                                      method: :delete,
                                      data: { confirm: 'Czy napewno chcesz usunąć tego gofra?' } %>
               </div>
+                <% end %>
+
             </div>
           <% end %>
         </div>
@@ -32,11 +37,13 @@
               <div><%= w.name %></div>
               <div><%= w.price %> zł</div>
               <div><%= link_to 'Szczegóły', waffle_path(w) %></div>
+              <% if can? :manage, Waffle %>
               <div><%= link_to 'Edytuj', edit_waffle_path(w) %></div>
               <div><%= link_to 'Usuń', waffle_path(w),
                         method: :delete,
                         data: { confirm: 'Czy napewno chcesz usunąć tego gofra?' } %>
               </div>
+              <% end %>
             </div>
           <% end %>
         </div>

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Shops</h1>
+<h1>Sklepy</h1>
 
 <table>
   <thead>
@@ -17,13 +17,16 @@
         <td><%= shop.nazwa %></td>
         <td><%= shop.lokalizacja %></td>
         <td><%= link_to 'Show', shop %></td>
+          <% if can? :manage, Shop %>
         <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
         <td><%= link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Shop', new_shop_path %>
+<% if can? :create, Shop %>
+<%= link_to 'Nowy sklepaaaaaa', new_shop_path %>
+<% end %>

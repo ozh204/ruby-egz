@@ -9,6 +9,7 @@
   <strong>Lokalizacja:</strong>
   <%= @shop.lokalizacja %>
 </p>
-
-<%= link_to 'Edit', edit_shop_path(@shop) %> |
-<%= link_to 'Back', shops_path %>
+<% if can? :edit, Shop %>
+<%= link_to 'Edytuj', edit_shop_path(@shop) %> |
+<% end %>
+<%= link_to 'Wróć', shops_path %>
