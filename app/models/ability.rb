@@ -7,11 +7,13 @@ class Ability
         can :manage, :all
       elsif user.worker?
         can :read, :all
-        can :create, Order
+        can :create,:edit, Order
       else
-        can :create, Order
-        can :read, Waffle
-        can :read, Shop
+        if user.logged_in?
+         can :create, Order
+         can :read, Waffle
+         can :read, Shop
+        end
       end
   end
 end
