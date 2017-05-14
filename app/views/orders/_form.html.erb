@@ -14,28 +14,35 @@
     Sklep:
     <%= f.collection_select :shop_id, Shop.all, :id, :nazwa, include_blank: false, include_hidden: false %>
 
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th class="col-md-1"></th>
-            <th class="col-md-1"></th>
-            <th class="col-md-6">Nazwa</th>
-            <th class="col-md-3">Cena</th>
-        </tr>
-        </thead>
 
-        <tbody>
-        <% @waffles.each do |w| %>
-            <tr>
-                <td><%= number_field_tag "selected_waffles[#{w.id}][]", 0, min: 0, max: 99, value: OrderWaffle.where(order_id: @order.id, waffle_id: w.id).pluck(:quantity).first || 0 %></td>
-                <td><%= image_tag(w.image.small) %></td>
-                <td><%= w.name %></td>
-                <td><%= w.price %> zł</td>
-            </tr>
-        <% end %>
-        </tbody>
-    </table>
+    <div  class="grids">
+      <div class="promocja">
+        <div class="rows">
+          <% @wafflesPromo.each do |a| %>
+              <div class="itemsPromo rowGrid">
+                <%= number_field_tag "selected_waffles[#{a.id}][]", 0, min: 0, max: 99, value: OrderWaffle.where(order_id: @order.id, waffle_id: a.id).pluck(:quantity).first || 0 %>
+                <div id="images"><%= image_tag(a.image) %></div>
+                <div id="names"><%= a.name %></div>
+                <div id="prices"><%= a.price %> zł</div>
 
+              </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="zwykly">
+        <div class="rows">
+          <% @waffles.each do |w| %>
+              <div class="items">
+                <%= number_field_tag "selected_waffles[#{w.id}][]", 0, min: 0, max: 99, value: OrderWaffle.where(order_id: @order.id, waffle_id: w.id).pluck(:quantity).first || 0 %>
+                <div><%= image_tag(w.image.small) %></div>
+                <div><%= w.name %></div>
+                <div><%= w.price %> zł</div>
+
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   <div class="actions">
     <%= f.submit 'Edytuj zamówienie' %>
   </div>

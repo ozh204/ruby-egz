@@ -111,7 +111,8 @@ $product-gallery-promo: (
 .itemsPromo {
   @include grid-column(1, $product-gallery-promo);
   margin-bottom: 1rem;
-min-height: 350px;
+min-height: 250px;
+  max-height: 250px;
 }
 .zwykly {
   @include grid-column(3, $sidebar-layout);
@@ -120,11 +121,14 @@ min-height: 350px;
 .rows {
   @include grid-collapse($product-gallery);
   @include grid-container;
+
 }
 
 .items {
   @include grid-column(1, $product-gallery);
   margin-bottom: 1rem;
+  min-height: 125px;
+  max-height: 125px;
 }
 
 .rowGrid{
@@ -133,6 +137,13 @@ min-height: 350px;
 
 .check {
   grid-row: 1;
+}
+input[type="number"] {
+  grid-column:1 ;
+  grid-row: 1;
+  height:40%;
+  width: 60%;
+
 }
 #images{
   grid-column:  1/5;

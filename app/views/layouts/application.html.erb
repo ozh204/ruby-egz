@@ -21,9 +21,11 @@
                 </li>
                 <% end %>
                     <% end %>
+              <% if logged_in? %>
                 <li class="nav-item active">
                     <%= link_to 'Zamówienia', { controller: 'orders' }, class: 'nav-link' %>
                 </li>
+                  <% end %>
                 <li class="nav-item active">
                     <%= link_to 'Sklepy', { controller: 'shops' }, class: 'nav-link' %>
                 </li>
