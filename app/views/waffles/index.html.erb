@@ -13,16 +13,16 @@
                 <div class="box1">
                     <% if !@wafflesPromoArr[i].nil? %>
                       <div class=" rowGrid itemsPromoRow">
-                        <div id="imageSmall"><%= image_tag(@wafflesPromoArr[i].image.small) %> </div>
-                        <div id="nameSmall"><%= @wafflesPromoArr[i].name %></div>
-                        <div id="priceSmall"><%= @wafflesPromoArr[i].price %> zł</div>
+                        <div id="image"><%= image_tag(@wafflesPromoArr[i].image.small) %> </div>
+                        <div id="name"><%= @wafflesPromoArr[i].name %></div>
+                        <div id="price"><%= @wafflesPromoArr[i].price %> zł</div>
                         <% if can? :manage, Waffle %>
                         <div class="check"><%= check_box_tag "waffles[]", @wafflesPromoArr[i].id %></div>
                             <% end %>
-                        <div class="linkSmall"><%= link_to '', waffle_path(@wafflesPromoArr[i]), class: "fa fa-chevron-up" %></div>
+                        <div class="link"><%= link_to '', waffle_path(@wafflesPromoArr[i]), class: "fa fa-chevron-up" %></div>
                    <% if can? :manage, Waffle %>
-                        <div class="linkSmall"><%= link_to '', edit_waffle_path(@wafflesPromoArr[i]), class: "fa fa-pencil-square-o" %></div>
-                        <div class="linkSmall"><%= link_to '', waffle_path(@wafflesPromoArr[i]),
+                        <div class="link"><%= link_to '', edit_waffle_path(@wafflesPromoArr[i]), class: "fa fa-pencil-square-o" %></div>
+                        <div class="link"><%= link_to '', waffle_path(@wafflesPromoArr[i]),
                                                            method: :delete,
                                                            data: { confirm: 'Czy napewno chcesz usunąć tego gofra?' } ,
                                                            class: "fa fa-times"%>
