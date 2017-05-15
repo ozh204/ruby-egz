@@ -13,7 +13,7 @@
                 <div class="box1">
                     <% if !@wafflesPromoArr[i].nil? %>
                       <div class=" rowGrid itemsPromoRow">
-                        <div id="image"><%= image_tag(@wafflesPromoArr[i].image.small) %> </div>
+                        <div id="images"><%= image_tag(@wafflesPromoArr[i].image.small) %> </div>
                         <div id="name"><%= @wafflesPromoArr[i].name %></div>
                         <div id="price"><%= @wafflesPromoArr[i].price %> zł</div>
                         <% if can? :manage, Waffle %>
