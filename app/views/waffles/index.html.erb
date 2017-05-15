@@ -10,14 +10,41 @@
                 <div class="box1">
                     <% if !@wafflesPromoArr[i].nil? %>
                     <%= image_tag(@wafflesPromoArr[i].image) %>
+                      <div class=" rowGrid itemsPromoRow">
+                        <div id="imageSmall"><%= image_tag(@wafflesPromoArr[i].image.small) %> </div>
+                        <div id="nameSmall"><%= @wafflesPromoArr[i].name %></div>
+                        <div id="priceSmall"><%= @wafflesPromoArr[i].price %> zł</div>
+                        <div class="check"><%= check_box_tag "waffles[]", @wafflesPromoArr[i].id %></div>
+                        <div class="linkSmall"><%= link_to '', waffle_path(@wafflesPromoArr[i]), class: "fa fa-chevron-up" %></div>
+                        <div class="linkSmall"><%= link_to '', edit_waffle_path(@wafflesPromoArr[i]), class: "fa fa-pencil-square-o" %></div>
+                        <div class="linkSmall"><%= link_to '', waffle_path(@wafflesPromoArr[i]),
+                                                           method: :delete,
+                                                           data: { confirm: 'Czy napewno chcesz usunąć tego gofra?' } ,
+                                                           class: "fa fa-times"%>
+                        </div>
+                      </div>
                     <% end %>
                 </div>
                 <% @box = 2 %>
                 <% (@counter..@counter+7).each do |j| %>
                     <div class="box<%= @box %>">
                         <% if !@wafflesArr[j].nil? %>
-                            <%= image_tag(@wafflesArr[j].image.small) %>
-                        <% end %>
+                          <div class="wafflesRow rowGrid">
+                            <div id="imageSmall"><%= image_tag(@wafflesArr[j].image.small) %>  </div>
+                            <div id="nameSmall"><%= @wafflesArr[j].name %></div>
+                            <div id="priceSmall"><%= @wafflesArr[j].price %> zł</div>
+
+                            <div class="check"><%= check_box_tag "waffles[]", @wafflesArr[j].id %></div>
+                            <div class="linkSmall"><%= link_to '', waffle_path(@wafflesArr[j]), class: "fa fa-chevron-up" %></div>
+                            <div class="linkSmall"><%= link_to '', edit_waffle_path(@wafflesArr[j]), class: "fa fa-pencil-square-o" %></div>
+                            <div class="linkSmall"><%= link_to '', waffle_path(@wafflesArr[j]),
+                                                               method: :delete,
+                              data: { confirm: 'Czy napewno chcesz usunąć tego gofra?' } ,
+                              class: "fa fa-times"%>
+                          </div>
+                          </div>
+
+                    <% end %>
                     </div>
                     <% @box+=1 %>
                     <% @counter+=1 %>

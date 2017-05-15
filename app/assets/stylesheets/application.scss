@@ -87,20 +87,17 @@ aside {
   text-align: center;
 }
 $sidebar-layout: (
-        columns: 5,
-        gutter: 5px,
-        //media: "(min-width: 300px)"
-
-        media: "(min-width: 768px)",
+        columns: 4
 );
 
 $product-gallery: (
-        columns: 3 ,
-        gutter: 5px,
+        columns: 2 ,
+);
+$product-gallery2: (
+        columns: 4 ,
 );
 $product-gallery-promo: (
         columns: 1  ,
-        gutter: 15px,
 
 );
 .grids{
@@ -108,32 +105,61 @@ $product-gallery-promo: (
 }
 .promocja {
    @include grid-column(2, $sidebar-layout);
+  margin-left: 0px;
+height: 300px;
 
+  border:solid  3px;
  }
 .itemsPromo {
   @include grid-column(1, $product-gallery-promo);
-  margin-bottom: 1rem;
-  border:ridge  10px;
 
+  height: 290px;
 }
 .zwykly {
-  @include grid-column(3, $sidebar-layout);
+  @include grid-column(2, $sidebar-layout);
+  max-height: 150px;
+  margin-left: 0px;
+}
+
+.zwykly2 {
+  @include grid-column(4, $sidebar-layout);
+  max-height: 150px;
+margin-left: 0px;
 }
 
 .rows {
   @include grid-collapse($product-gallery);
   @include grid-container;
-
+  max-height: 300px;
+  margin-right: 0px;
+  margin-left: 0px;
 }
-
+.itemsPromoRow{
+  height: 300px;
+}
+.wafflesRow {
+  min-height: 140px;
+}
 .items {
-  border:ridge  10px;
+  border:solid  3px;
   @include grid-column(1, $product-gallery);
-  margin-bottom: 1rem;
+  height: 150px;
+  margin-left: 0px;
 }
-
+.items2 {
+  border:solid 3px;
+  @include grid-column(1, $product-gallery2);
+  height: 150px;
+  margin-right: -20px;
+}
 .rowGrid{
   display: grid;
+  text-align: center;
+}
+
+.rowGrid2{
+  display: grid;
+  text-align: center;
 }
 
 .check {
@@ -181,13 +207,15 @@ grid-column: 5;
   grid-column: 5;
 
 }
-
+.rowGrid:hover{
+  background: #b6b6b6;
+  border:ridge  3px;}
 .items:hover {
     background: #b6b6b6;
   border:ridge  5px;}
- .itemsPromo:hover {
+ .promocja:hover {
   background: #b6b6b6;
-  border:ridge  10px;}
+  border:ridge  3px;}
 
 #mother-box {
   width: 1000px;
@@ -209,46 +237,39 @@ grid-column: 5;
 
 .box1 {
   width: 500px;
-  height: 250px;
+  height: 300px;
   grid-area: box1;
+  border:solid  3px;
 }
 .box2 {
-  width: 100px;
-  height: 50px;
+  border:solid  3px;
   grid-area: box2;
 }
 .box3 {
-  width: 100px;
-  height: 50px;
+  border:solid 3px;
   grid-area: box3;
 }
 .box4 {
-  width: 100px;
-  height: 50px;
+  border:solid  3px;
   grid-area: box4;
 }
 .box5 {
-  width: 100px;
-  height: 50px;
+  border:solid  3px;
   grid-area: box5;
 }
 .box6 {
-  width: 100px;
-  height: 50px;
+  border:solid  3px;
   grid-area: box6;
 }
 .box7 {
-  width: 100px;
-  height: 50px;
+  border:solid  3px;
   grid-area: box7;
 }
 .box8 {
-  width: 100px;
-  height: 50px;
+  border:solid  3px;
   grid-area: box8;
 }
 .box9 {
-  width: 100px;
-  height: 50px;
+  border:solid  3px;
   grid-area: box9;
 }

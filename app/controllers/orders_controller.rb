@@ -14,8 +14,8 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    # @waffles = Waffle.all
-    @waffles = Waffle.where.not(discount:true).in_groups_of(6)
+    # @waffles = Waffle.all? { |  }
+    @waffles = Waffle.where.not(discount:true).in_groups_of(4)
     @wafflesPromo = Waffle.where(discount:true)
 
   end
