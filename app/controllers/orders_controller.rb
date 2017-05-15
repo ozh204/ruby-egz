@@ -53,7 +53,11 @@ class OrdersController < ApplicationController
   end
 
   def edit
-    @waffles = Waffle.all
+      @order = Order.new
+    # @waffles = Waffle.all? { |  }
+    @waffles = Waffle.where.not(discount:true).in_groups_of(4)
+    @wafflesPromo = Waffle.where(discount:true)
+
   end
   def update
     OrderWaffle.destroy_all(order_id: @order.id)
