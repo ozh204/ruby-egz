@@ -8,8 +8,9 @@
 
     <div id="mother-box">
         <% @counter = 0 %>
-        <% (0..@wafflesPromoCount-1).each do |i| %>
-            <div id="box">
+        <% (0..@wafflesPromoCount-1).each_with_index do |i,j| %>
+            <div id="boxik<%= j & 3 %>">
+
                 <div class="box1">
                     <% if !@wafflesPromoArr[i].nil? %>
                       <div class=" rowGrid itemsPromoRow">
