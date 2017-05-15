@@ -240,7 +240,8 @@ grid-column: 5;
   min-width: 1000px;
   min-height: 300px;
 }
-#box {
+
+#boxik0 {
   width: 100%;
   height: 100%;
   display: grid;
@@ -251,7 +252,27 @@ grid-column: 5;
     "box1 box1 box4 box5"
     "box6 box7 box8 box9";
 }
-
+#boxik1 {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: auto;
+  grid-template-areas:
+          "box2 box1 box1 box3"
+          "box4 box1 box1 box5"
+          "box6 box7 box8 box9";
+}#boxik2 {
+   width: 100%;
+   height: 100%;
+   display: grid;
+   grid-template-columns: 25% 25% 25% 25%;
+   grid-template-rows: auto;
+   grid-template-areas:
+           "box2 box3 box1 box1"
+           "box4 box5 box1 box1"
+           "box6 box7 box8 box9";
+ }
 .box1 {
   width: 500px;
   height: 300px;
