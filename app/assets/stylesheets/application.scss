@@ -102,6 +102,7 @@ $product-gallery-promo: (
 );
 .grids{
   @include grid-container;
+  border: 2px solid #665235;
 }
 .promocja {
    @include grid-column(2, $sidebar-layout);
@@ -113,7 +114,11 @@ height: 300px;
 .itemsPromo {
   @include grid-column(1, $product-gallery-promo);
 
-  height: 290px;
+  margin-bottom: 1rem;
+  min-height: 250px;
+  max-height: 250px;
+  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.05), inset -2px -2px 0 #665235;
+
 }
 .zwykly {
   @include grid-column(2, $sidebar-layout);
@@ -143,14 +148,18 @@ margin-left: 0px;
 .items {
   border:solid  3px;
   @include grid-column(1, $product-gallery);
-  height: 150px;
-  margin-left: 0px;
+
+margin-bottom: 1rem;
+  min-height: 125px;
+  max-height: 125px;
+  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.05), inset -2px -2px 0 #665235;
 }
 .items2 {
   border:solid 3px;
   @include grid-column(1, $product-gallery2);
   height: 150px;
   margin-right: -20px;
+
 }
 .rowGrid{
   display: grid;

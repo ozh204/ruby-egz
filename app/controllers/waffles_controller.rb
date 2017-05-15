@@ -1,5 +1,6 @@
 class WafflesController < ApplicationController
   before_action :set_waffle, only: [:show, :edit, :update, :destroy, :removeImage]
+  load_and_authorize_resource
 
   def index
     waffles = Waffle.where.not(discount:true)
@@ -19,9 +20,11 @@ class WafflesController < ApplicationController
       @wafflesPromoCount+=1
     end
 
+
   end
 
   def new
+    # authorize! :create, Waffle
     @waffle = Waffle.new
   end
   def create
@@ -49,6 +52,8 @@ class WafflesController < ApplicationController
   end
 
   def destroy
+    Waffle.destroy(params[:id])
+
     redirect_to waffles_path
   end
 
@@ -72,7 +77,7 @@ class WafflesController < ApplicationController
 
   def waffle_params
     #params.require(:waffle).permit(:name, :price, :image)
-    params.require(:waffle).permit(:name, :price, :image,:discount)
+    params.require(:waffle).permit(:name, :price, :image, :discount)
   end
 
 end

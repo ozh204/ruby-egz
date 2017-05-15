@@ -17,7 +17,7 @@
       <tr>
         <td><%= order.price %></td>
         <td><%= order.date %></td>
-          <td><%= Shop.find(order).nazwa %></td>
+          <td><%= Shop.find(order.shop_id).nazwa %></td>
           <td><%= link_to 'Szczegóły', order %></td>
         <td><%= link_to 'Edytuj', edit_order_path(order) %></td>
         <td><%= link_to 'Usuń', order, method: :delete, data: { confirm: 'Jesteś pewny?' } %></td>
