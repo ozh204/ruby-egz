@@ -17,7 +17,8 @@ Skorzystałem z następujących niestandardowych gemów:
 - rails-controller-testing      - testowanie kontrolerów
 - carrierwave-dropbox           - wrzucanie obrazkow na zdalny serwer dropbox
 - mini_magick 4.6.1             - skalowanie obrazów
-- neat                          - automatyzacja technologii grid, co okazało się porażką i nie zostało użyte
+- neat                          - automatyzacja technologii grid, co okazało się porażką
+- font_awesome 			- czcionka zawierająca wiele obrazków
 - better_errors                 - błedy wyświetlane przez program są bardziej czytelne
 - binding_of_caller             - dostęp do konsoli z przeglądarki w widoku zmienionego błedu dzięki better-errors
 
