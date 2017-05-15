@@ -19,7 +19,7 @@ Skorzystałem z następujących niestandardowych gemów:
 - mini_magick 4.6.1             - skalowanie obrazów
 - neat                          - automatyzacja technologii grid, co okazało się porażką i nie zostało użyte
 - better_errors                 - błedy wyświetlane przez program są bardziej czytelne
-- binding_of_caller             - coś :D
+- binding_of_caller             - dostęp do konsoli z przeglądarki w widoku zmienionego błedu dzięki better-errors
 
 Konta do logowania:
 
