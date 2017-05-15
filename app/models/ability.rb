@@ -11,6 +11,7 @@ class Ability
         can :manage, :all
       elsif user.has_role? :worker
         can :read, :all
+
         can [:create, :edit], Order
       elsif user.has_role? :not_logged
         can :read, Waffle
@@ -18,6 +19,7 @@ class Ability
       else                # zalogowany bez roli
         can :create, Order
         can :read, [Waffle, Shop, user]
+
       end
   end
 
