@@ -29,11 +29,7 @@
                     <%= link_to 'Sklepy', { controller: 'shops' }, class: 'nav-link' %>
                 </li>
                 <% end %>
-                <% if can? :manage, User %>
-                <li class="nav-item">
-                    <%= link_to 'Użytkownicy', { controller: 'users' }, class: 'nav-link' %>
-                </li>
-                <% end %>
+
                 <% if can? :create, Order %>
                     <li class="nav-item">
                         <%= link_to 'Zamów', { controller: 'orders', action: 'new' }, class: 'nav-link' %>
@@ -42,7 +38,11 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <% if logged_in? %>
-                    <li><%= link_to 'Użytkownicy', { controller: 'users' }, class: 'nav-link' %></li>
+                    <% if can? :manage, User %>
+                        <li class="nav-item">
+                            <%= link_to 'Użytkownicy', { controller: 'users' }, class: 'nav-link' %>
+                        </li>
+                    <% end %>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Konto
