@@ -102,6 +102,9 @@ $product-gallery-promo: (
 );
 .grids{
   @include grid-container;
+
+}
+.gridBorder {
   border: 2px solid #665235;
 }
 .promocja {
@@ -109,15 +112,14 @@ $product-gallery-promo: (
   margin-left: 0px;
 height: 300px;
 
-  border:solid  3px;
  }
 .itemsPromo {
   @include grid-column(1, $product-gallery-promo);
 
   margin-bottom: 1rem;
-  min-height: 250px;
-  max-height: 250px;
-  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.05), inset -2px -2px 0 #665235;
+  min-height: 270px;
+  max-height: 270px;
+  box-shadow: inset -2px 2px 0 rgba(255, 255, 255, 0.05), inset 2px -2px 0 #665235;
 
 }
 .zwykly {
@@ -130,6 +132,7 @@ height: 300px;
   @include grid-column(4, $sidebar-layout);
   max-height: 150px;
 margin-left: 0px;
+  width: calc(100% - 60px);
 }
 
 .rows {
@@ -146,20 +149,20 @@ margin-left: 0px;
   min-height: 140px;
 }
 .items {
-  border:solid  3px;
   @include grid-column(1, $product-gallery);
 
 margin-bottom: 1rem;
   min-height: 125px;
   max-height: 125px;
-  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.05), inset -2px -2px 0 #665235;
+  box-shadow: inset -2px 2px 0 rgba(255, 255, 255, 0.05), inset 2px -2px 0 #665235;
 }
 .items2 {
-  border:solid 3px;
   @include grid-column(1, $product-gallery2);
-  height: 150px;
-  margin-right: -20px;
 
+  margin-bottom: 1rem;
+  min-height: 125px;
+  max-height: 125px;
+  box-shadow: inset -2px 2px 0 rgba(255, 255, 255, 0.05), inset 2px -2px 0 #665235;
 }
 .rowGrid{
   display: grid;
@@ -177,7 +180,10 @@ margin-bottom: 1rem;
 input[type="number"] {
   grid-column:1/5 ;
   grid-row: 6;
-  width: 100%;
+  width: 50%;
+  margin-left: 25%;
+  text-align: center;
+margin-bottom: 10px;
 
 }
 #images{
@@ -217,16 +223,17 @@ grid-column: 5;
 
 }
 .rowGrid:hover{
-  background: #b6b6b6;
+  background: #e2e2e2;
   border:ridge  3px;}
 .items:hover {
-    background: #b6b6b6;
+    background: #e2e2e2;
   border:ridge  5px;}
- .promocja:hover {
-  background: #b6b6b6;
+ .itemsPromo:hover {
+  background: #e2e2e2;
   border:ridge  3px;}
 
 #mother-box {
+  border: 2px solid #665235;
   width: 1000px;
   height: auto;
   min-width: 1000px;
@@ -248,37 +255,46 @@ grid-column: 5;
   width: 500px;
   height: 300px;
   grid-area: box1;
-  border:solid  3px;
+
+  border: 2px solid #665235;
 }
 .box2 {
-  border:solid  3px;
   grid-area: box2;
+
+  border: 2px solid #665235;
 }
 .box3 {
-  border:solid 3px;
   grid-area: box3;
+
+  border: 2px solid #665235;
 }
 .box4 {
-  border:solid  3px;
   grid-area: box4;
+
+  border: 2px solid #665235;
 }
 .box5 {
-  border:solid  3px;
   grid-area: box5;
+
+  border: 2px solid #665235;
 }
 .box6 {
-  border:solid  3px;
   grid-area: box6;
+
+  border: 2px solid #665235;
 }
 .box7 {
-  border:solid  3px;
   grid-area: box7;
+
+  border: 2px solid #665235;
 }
 .box8 {
-  border:solid  3px;
   grid-area: box8;
+
+  border: 2px solid #665235;
 }
 .box9 {
-  border:solid  3px;
   grid-area: box9;
+
+  border: 2px solid #665235;
 }

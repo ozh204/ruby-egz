@@ -18,16 +18,16 @@
 
 
 
+    <div class="gridBorder">
       <% @counter = 0 %>
       <% @wafflesPromo.each do |k|   %>
-
 
         <div  class="grids">
 
               <div class ="promocja">
               <div class="itemsPromo rowGrid ">
                 <%= number_field_tag "selected_waffles[#{ k.id}][]", 0, min: 0, max: 99, value: OrderWaffle.where(order_id: @order.id, waffle_id: k.id).pluck(:quantity).first || 0 %>
-                <div id="images"><%= image_tag(k.image) %><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Gofr.JPG/220px-Gofr.JPG" /></div>
+                <div id="images"><%= image_tag(k.image) %></div>
                 <div id="names"><%= k.name %></div>
                 <div id="prices"><%= k.price %> zł</div>
 
@@ -87,7 +87,7 @@
 
         </div>
     <% end %>
-
+    </div>
   <div class="actions">
     <%= f.submit 'Edytuj zamówienie' %>
   </div>
