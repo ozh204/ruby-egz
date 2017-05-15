@@ -12,12 +12,13 @@
             <div id="box">
                 <div class="box1">
                     <% if !@wafflesPromoArr[i].nil? %>
-                    <%= image_tag(@wafflesPromoArr[i].image) %>
                       <div class=" rowGrid itemsPromoRow">
                         <div id="imageSmall"><%= image_tag(@wafflesPromoArr[i].image.small) %> </div>
                         <div id="nameSmall"><%= @wafflesPromoArr[i].name %></div>
                         <div id="priceSmall"><%= @wafflesPromoArr[i].price %> zł</div>
+                        <% if can? :manage, Waffle %>
                         <div class="check"><%= check_box_tag "waffles[]", @wafflesPromoArr[i].id %></div>
+                            <% end %>
                         <div class="linkSmall"><%= link_to '', waffle_path(@wafflesPromoArr[i]), class: "fa fa-chevron-up" %></div>
                    <% if can? :manage, Waffle %>
                         <div class="linkSmall"><%= link_to '', edit_waffle_path(@wafflesPromoArr[i]), class: "fa fa-pencil-square-o" %></div>
@@ -38,8 +39,9 @@
                             <div id="imageSmall"><%= image_tag(@wafflesArr[j].image.small) %>  </div>
                             <div id="nameSmall"><%= @wafflesArr[j].name %></div>
                             <div id="priceSmall"><%= @wafflesArr[j].price %> zł</div>
-
+                            <% if can? :manage, Waffle %>
                             <div class="check"><%= check_box_tag "waffles[]", @wafflesArr[j].id %></div>
+                                <% end %>
                             <div class="linkSmall"><%= link_to '', waffle_path(@wafflesArr[j]), class: "fa fa-chevron-up" %></div>
                                <% if can? :manage, Waffle %>
                             <div class="linkSmall"><%= link_to '', edit_waffle_path(@wafflesArr[j]), class: "fa fa-pencil-square-o" %></div>
@@ -60,5 +62,7 @@
             </div>
         <% end %>
     </div>
+    <% if can? :manage, Waffle %>
 <%= submit_tag "Usuń zaznaczone" %>
+        <% end %>
 <% end %>
